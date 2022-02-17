@@ -1,4 +1,5 @@
 import "./App.css";
+import BaiTapLayoutTailwindCss from "./TailwindComponent/BaiTapLayoutTailwindCss";
 import BorderRadius from "./TailwindComponent/BorderRadius";
 import CustomCss from "./TailwindComponent/CustomCss";
 import DemoGrid from "./TailwindComponent/DemoGrid";
@@ -18,7 +19,8 @@ function App() {
       {/* <TextBackGroundDemo></TextBackGroundDemo>
       <BorderRadius></BorderRadius> */}
       {/* <ResponsiveDemo></ResponsiveDemo> */}
-      <CustomCss></CustomCss>
+      {/* <CustomCss></CustomCss> */}
+      <BaiTapLayoutTailwindCss></BaiTapLayoutTailwindCss>
     </div>
   );
 }
