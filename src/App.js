@@ -1,4 +1,5 @@
 import "./App.css";
+import BaiTapTongHop from "./BaiTapTongHop/BaiTapTongHop";
 import ChunkLodash from "./Lodash/ChunkLodash";
 import CompareObjectArray from "./Lodash/CompareObjectArray";
 import FillLodash from "./Lodash/FillLodash";
@@ -38,7 +39,8 @@ function App() {
       {/* <IncludeLodash></IncludeLodash> */}
       {/* <UniqLodash></UniqLodash> */}
       {/* <FlattenLodash></FlattenLodash> */}
-      <CompareObjectArray></CompareObjectArray>
+      {/* <CompareObjectArray></CompareObjectArray> */}
+      <BaiTapTongHop></BaiTapTongHop>
     </div>
   );
 }
