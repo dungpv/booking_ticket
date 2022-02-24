@@ -1,37 +1,46 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Carousel } from "antd";
+import { useSelector, useDispatch } from "react-redux";
+import { getCarouselAction } from "../../../../redux/actions/CarouselActions";
 
 const contentStyle = {
-  height: "400px",
+  height: "1000px",
   color: "#fff",
   lineHeight: "160px",
   textAlign: "center",
-  background: "#364d79",
+  backgroundPosition: "center",
+  backgroundSize: "100%",
+  backgroundRepeat: "no-repeat",
 };
 
 export default function HomeCarousel(props) {
-  return (
-    <Carousel effect="fade">
-      <div>
-        <div style={contentStyle}>
-          <img src="https://picsum.photos/1000" className="w-full" alt="123" />
+  const { arrImg } = useSelector((state) => state.CarouselReducer);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    //1 action = {type:'',data}
+    //2 (phải cài middleware): callBackFunction (dispatch)
+    dispatch(getCarouselAction);
+  }, []);
+
+  const renderImg = () => {
+    return arrImg.map((item, index) => {
+      return (
+        <div key={index}>
+          <div
+            style={{ ...contentStyle, backgroundImage: `url(${item.hinhAnh})` }}
+          >
+            <img
+              src={item.hinhAnh}
+              className="w-full opacity-0"
+              alt={item.hinhAnh}
+            />
+          </div>
         </div>
-      </div>
-      <div>
-        <div style={contentStyle}>
-          <img src="https://picsum.photos/1000" className="w-full" alt="123" />
-        </div>
-      </div>
-      <div>
-        <div style={contentStyle}>
-          <img src="https://picsum.photos/1000" className="w-full" alt="123" />
-        </div>
-      </div>
-      <div>
-        <div style={contentStyle}>
-          <img src="https://picsum.photos/1000" className="w-full" alt="123" />
-        </div>
-      </div>
-    </Carousel>
-  );
+      );
+    });
+  };
+
+  return <Carousel effect="fade">{renderImg()}</Carousel>;
 }
