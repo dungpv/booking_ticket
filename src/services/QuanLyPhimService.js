@@ -1,3 +1,4 @@
+import { GROUPID } from "../util/settings/config";
 import { baseService } from "./baseService";
 
 export class QuanLyPhimService extends baseService {
@@ -5,7 +6,11 @@ export class QuanLyPhimService extends baseService {
     super();
   }
   layDanhSachBanner = () => {
-    return this.get(`/api/QuanLyPhim/LayDanhSachBanner`);
+    return this.get(`/QuanLyPhim/LayDanhSachBanner`);
+  };
+
+  layDanhSachPhim = () => {
+    return this.get(`/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUPID}`);
   };
 }
 
