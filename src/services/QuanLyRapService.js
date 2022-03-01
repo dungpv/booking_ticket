@@ -11,6 +11,10 @@ export class QuanLyRapService extends baseService {
       `/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=${GROUPID}`
     );
   };
+
+  layThongTinLichChieuPhim = (maPhim) => {
+    return this.get(`/QuanLyRap/LayThongTinLichChieuPhim?maPhim=${maPhim}`);
+  };
 }
 
 export const quanLyRapService = new QuanLyRapService();
