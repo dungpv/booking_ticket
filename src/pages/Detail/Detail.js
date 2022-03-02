@@ -39,14 +39,10 @@ export default function Detail(props) {
         blur={10} // default blur value is 10px
         borderRadius={0} // default border radius value is 10px
       >
-        <div
-          className="grid grid-cols-12 container"
-          style={{
-            marginLeft: "15%",
-          }}
-        >
-          <div className="col-span-6 col-start-3">
+        <div className="grid grid-cols-12">
+          <div className="col-span-6">
             <div className="grid grid-cols-3">
+              <div className="col-span-1"></div>
               <img
                 className="col-span-1"
                 src={filmDetail.hinhAnh}
@@ -54,7 +50,7 @@ export default function Detail(props) {
                 alt="123"
               />
               <div
-                className="col-span-2"
+                className="col-span-1 ml-5"
                 style={{ marginTop: "25%", marginLeft: "20px" }}
               >
                 <p className="text-sm">
@@ -67,10 +63,10 @@ export default function Detail(props) {
             </div>
           </div>
 
-          <div className="col-span-6">
+          <div className="col-span-6" style={{ marginLeft: "5%" }}>
             <h1
               style={{
-                marginLeft: "9%",
+                marginLeft: "7%",
                 color: "yellow",
                 fontWeight: "bold",
                 fontSize: 15,
@@ -79,7 +75,7 @@ export default function Detail(props) {
               Đánh giá
             </h1>
             <h1
-              style={{ marginLeft: "3%" }}
+              style={{ marginLeft: "2%" }}
               className="text-green-400 text-2xl"
             >
               <Rate
@@ -99,12 +95,7 @@ export default function Detail(props) {
           </div>
         </div>
 
-        <div
-          className="mt-10 ml-72 w-2/3 container bg-white px-5 py-5"
-          style={{
-            marginLeft: "9%",
-          }}
-        >
+        <div className="mt-10 ml-72 w-2/3 container bg-white px-5 py-5">
           <Tabs defaultActiveKey="1" centered>
             <TabPane tab="Lịch chiếu" key="1" style={{ minHeight: 300 }}>
               <div>
