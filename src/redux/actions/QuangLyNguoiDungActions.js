@@ -1,5 +1,6 @@
 import { quanLyNguoiDungService } from "../../services/QuanLyNguoiDungService";
 import { DANG_NHAP_ACTION } from "./types/QuanLyNguoiDungType";
+import { history } from "../../App";
 
 export const dangNhapAction = (thongTinDangNhap) => {
   return async (dispatch) => {
@@ -12,6 +13,7 @@ export const dangNhapAction = (thongTinDangNhap) => {
           thongTinDangNhap: result.data.content,
         });
       }
+      history.goBack(); // chuyen ve trang truoc do
       console.log("result", result);
     } catch (errors) {
       console.log("errors", errors);
