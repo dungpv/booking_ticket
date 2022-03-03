@@ -1,4 +1,5 @@
 import { baseService } from "./baseService";
+import { ThongTinDatVe } from "../_core/models/ThongTinDatVe";
 
 export class QuanLyDatVeService extends baseService {
   constructor() {
@@ -9,6 +10,10 @@ export class QuanLyDatVeService extends baseService {
     return this.get(
       `/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`
     );
+  };
+
+  datVe = (thongTinDatVe = new ThongTinDatVe()) => {
+    return this.post(`/QuanLyDatVe/DatVe`, thongTinDatVe);
   };
 }
 
