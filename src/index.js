@@ -12,6 +12,7 @@ import { store } from "./redux/configStore";
 //Cấu hình realtime (websocket với signalR)
 import * as signalR from "@aspnet/signalr";
 import { DOMAIN_SIGNALR } from "./util/settings/config";
+import "./i18n";
 
 //Đoạn code để kết nối đến server lắng nghe sự kiện từ server
 export const connection = new signalR.HubConnectionBuilder()
