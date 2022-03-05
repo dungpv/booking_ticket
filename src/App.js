@@ -12,6 +12,7 @@ import CheckoutTemplate from "./templates/CheckoutTemplate/CheckoutTemplate";
 import Checkout from "./pages/Checkout/Checkout";
 import UserTemplate from "./templates/UserTemplate/UserTemplate";
 import Loading from "./components/Loading/Loading";
+import Profile from "./pages/Profile/Profile";
 
 export const history = createBrowserHistory();
 
@@ -26,7 +27,8 @@ function App() {
         <HomeTemplate path="/news" exact Component={News} />
         <HomeTemplate path="/detail/:id" exact Component={Detail} />
 
-        <Route path="/register" exact component={Register} />
+        <HomeTemplate path="/profile" exact Component={Profile} />
+        <UserTemplate path="/register" exact Component={Register} />
         <CheckoutTemplate path="/checkout/:id" exact component={Checkout} />
 
         <UserTemplate path="/login" exact Component={Login} />
