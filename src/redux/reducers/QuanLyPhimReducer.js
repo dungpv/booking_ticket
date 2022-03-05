@@ -48,6 +48,7 @@ export const QuanLyPhimReducer = (state = stateDefault, action) => {
   switch (action.type) {
     case SET_DANH_SACH_PHIM: {
       state.arrFilm = action.arrFilm;
+      state.arrFilmDefault = state.arrFilm;
       return { ...state };
     }
     case SET_FILM_DANG_CHIEU: {
