@@ -12,6 +12,10 @@ export class QuanLyPhimService extends baseService {
   layDanhSachPhim = () => {
     return this.get(`/QuanLyPhim/LayDanhSachPhim?maNhom=${GROUPID}`);
   };
+
+  themPhimUploadHinh = (formData) => {
+    return this.post(`/QuanLyPhim/ThemPhimUploadHinh`, formData);
+  };
 }
 
 export const quanLyPhimService = new QuanLyPhimService();
