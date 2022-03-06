@@ -1,7 +1,6 @@
 import { quanLyDatVeService } from "../../services/QuanLyDatVeService";
 import { ThongTinDatVe } from "../../_core/models/ThongTinDatVe";
 import { displayLoadingAction, hideLoadingAction } from "./LoadingActions";
-import { DISPLAY_LOADING, HIDE_LOADING } from "./types/LoadingType";
 import {
   CHUYEN_TAB,
   DAT_VE,

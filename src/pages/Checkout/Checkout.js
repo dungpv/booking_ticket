@@ -18,7 +18,6 @@ import _ from "lodash";
 import {
   CHANGE_TAB_ACTIVE,
   DAT_GHE,
-  DAT_VE,
 } from "../../redux/actions/types/QuanLyDatVeType";
 import { ThongTinDatVe } from "../../_core/models/ThongTinDatVe";
 import { Tabs } from "antd";

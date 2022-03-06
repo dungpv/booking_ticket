@@ -1,20 +1,11 @@
 import React, { useEffect, useState } from "react";
-import {
-  Form,
-  Input,
-  Button,
-  Radio,
-  DatePicker,
-  InputNumber,
-  Switch,
-} from "antd";
+import { Form, Input, Radio, DatePicker, InputNumber, Switch } from "antd";
 import { useFormik } from "formik";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 import {
   capNhatPhimUploadAction,
   layThongTinPhimAction,
-  themPhimUploadHinhAction,
 } from "../../../../redux/actions/QuanLyPhimActions";
 import { GROUPID } from "../../../../util/settings/config";
 
