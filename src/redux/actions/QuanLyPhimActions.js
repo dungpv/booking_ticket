@@ -1,5 +1,6 @@
 import { quanLyPhimService } from "../../services/QuanLyPhimService";
 import { SET_DANH_SACH_PHIM, SET_THONG_TIN_PHIM } from "./types/QuanLyPhimType";
+import { history } from "../../App";
 
 export const layDanhSachPhimAction = () => {
   return async (dispatch) => {
@@ -24,6 +25,10 @@ export const themPhimUploadHinhAction = (formData) => {
       const result = await quanLyPhimService.themPhimUploadHinh(formData);
       alert("Thêm phim thành công!");
       console.log("result", result.data.content);
+
+      dispatch(layDanhSachPhimAction());
+
+      history.push("/admin/films");
     } catch (errors) {
       console.log(errors.response?.data);
     }
@@ -43,6 +48,22 @@ export const layThongTinPhimAction = (maPhim) => {
       });
     } catch (errors) {
       console.log("errors", errors);
+    }
+  };
+};
+
+export const capNhatPhimUploadAction = (formData) => {
+  return async (dispatch) => {
+    try {
+      const result = await quanLyPhimService.capNhatPhimUpload(formData);
+      alert("Cập nhật phim thành công!");
+      console.log("result", result.data.content);
+
+      dispatch(layDanhSachPhimAction());
+
+      history.push("/admin/films");
+    } catch (errors) {
+      console.log(errors.response?.data);
     }
   };
 };

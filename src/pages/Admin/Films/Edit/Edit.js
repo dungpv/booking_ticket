@@ -12,6 +12,7 @@ import { useFormik } from "formik";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  capNhatPhimUploadAction,
   layThongTinPhimAction,
   themPhimUploadHinhAction,
 } from "../../../../redux/actions/QuanLyPhimActions";
@@ -21,7 +22,7 @@ export default function Edit(props) {
   const [componentSize, setComponentSize] = useState("default");
   const [imgSrc, setImgSrc] = useState("");
   const { thongTinPhim } = useSelector((state) => state.QuanLyPhimReducer);
-  console.log("thongTinPhim", thongTinPhim);
+  //console.log("thongTinPhim", thongTinPhim);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -32,10 +33,11 @@ export default function Edit(props) {
   const formik = useFormik({
     enableReinitialize: true,
     initialValues: {
+      maPhim: thongTinPhim.maPhim,
       tenPhim: thongTinPhim?.tenPhim,
       trailer: thongTinPhim?.trailer,
       moTa: thongTinPhim?.moTa,
-      ngayKhoiChieu: thongTinPhim.ngayKhoiChieu,
+      ngayKhoiChieu: moment(thongTinPhim.ngayKhoiChieu).format("DD/MM/YYYY"),
       dangChieu: thongTinPhim.dangChieu,
       sapChieu: thongTinPhim.sapChieu,
       hot: thongTinPhim.hot,
@@ -50,12 +52,13 @@ export default function Edit(props) {
         if (key !== "hinhAnh") {
           formData.append(key, values[key]);
         } else {
-          formData.append("File", values.hinhAnh, values.hinhAnh.name);
+          if (values.hinhAnh !== null) {
+            formData.append("File", values.hinhAnh, values.hinhAnh.name);
+          }
         }
       }
 
-      //Gọi api gửi các giá trị formdata về backend xử lý
-      dispatch(themPhimUploadHinhAction(formData));
+      dispatch(capNhatPhimUploadAction(formData));
     },
   });
 
@@ -64,7 +67,7 @@ export default function Edit(props) {
   };
 
   const handleChangeDatePicker = (value) => {
-    let ngayKhoiChieu = moment(value).format("DD/MM/YYYY");
+    let ngayKhoiChieu = moment(value);
     formik.setFieldValue("ngayKhoiChieu", ngayKhoiChieu);
   };
 
@@ -80,7 +83,7 @@ export default function Edit(props) {
     };
   };
 
-  const handleChangeFile = (e) => {
+  const handleChangeFile = async (e) => {
     let file = e.target.files[0];
 
     if (
@@ -89,6 +92,8 @@ export default function Edit(props) {
       file.type === "image/gif" ||
       file.type === "image/png"
     ) {
+      //Đem dữ liệu file lưu vào formik
+      await formik.setFieldValue("hinhAnh", file);
       //Tạo đối tượng để đọc file
       let reader = new FileReader();
       reader.readAsDataURL(file);
@@ -96,8 +101,6 @@ export default function Edit(props) {
         // console.log(e.target.result);
         setImgSrc(e.target.result); //Hình base 64
       };
-      //Đem dữ liệu file lưu vào formik
-      formik.setFieldValue("hinhAnh", file);
     }
   };
 

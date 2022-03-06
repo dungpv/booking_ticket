@@ -20,6 +20,10 @@ export class QuanLyPhimService extends baseService {
   layThongTinPhim = (maPhim) => {
     return this.get(`/QuanLyPhim/LayThongTinPhim?MaPhim=${maPhim}`);
   };
+
+  capNhatPhimUpload = (formData) => {
+    return this.post(`/QuanLyPhim/CapNhatPhimUpload`, formData);
+  };
 }
 
 export const quanLyPhimService = new QuanLyPhimService();
