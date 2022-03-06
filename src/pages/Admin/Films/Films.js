@@ -4,6 +4,7 @@ import {
   EditOutlined,
   SearchOutlined,
   DeleteOutlined,
+  CalculatorOutlined,
 } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -121,6 +122,16 @@ export default function Films(props) {
             >
               <DeleteOutlined style={{ color: "red" }} />{" "}
             </span>
+            <NavLink
+              key={3}
+              className=" mr-2 text-2xl"
+              to={`/admin/films/showtime/${film.maPhim}/${film.tenPhim}`}
+              onClick={() => {
+                localStorage.setItem("filmParams", JSON.stringify(film));
+              }}
+            >
+              <CalculatorOutlined style={{ color: "green" }} />{" "}
+            </NavLink>
           </Fragment>
         );
       },
