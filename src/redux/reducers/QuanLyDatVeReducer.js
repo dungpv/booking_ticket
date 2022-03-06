@@ -3,6 +3,7 @@ import {
   CHUYEN_TAB,
   DAT_GHE,
   DAT_VE,
+  DAT_VE_HOAN_TAT,
   SET_CHI_TIET_PHONG_VE,
 } from "../actions/types/QuanLyDatVeType";
 import { ThongTinLichChieu } from "../../_core/models/ThongTinPhongVe";
@@ -32,10 +33,13 @@ export const QuanLyDatVeReducer = (state = stateDefault, action) => {
         danhSachGheCapNhat.push(action.gheDuocChon);
       }
 
-      return { ...state, danhSachGheDangDat: danhSachGheCapNhat };
+      return {
+        ...state,
+        danhSachGheDangDat: danhSachGheCapNhat,
+      };
     }
 
-    case DAT_VE: {
+    case DAT_VE_HOAN_TAT: {
       state.danhSachGheDangDat = [];
       return { ...state };
     }

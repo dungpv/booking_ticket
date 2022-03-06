@@ -18,7 +18,7 @@ export default function Films(props) {
 
   const dispatch = useDispatch();
 
-  console.log("arrFilmDefault", arrFilmDefault);
+  //console.log("arrFilmDefault", arrFilmDefault);
 
   useEffect(() => {
     dispatch(layDanhSachPhimAction());
@@ -100,7 +100,7 @@ export default function Films(props) {
           <Fragment>
             <NavLink
               key={1}
-              className=" mr-2  text-2xl"
+              className=" mr-2 text-2xl"
               to={`/admin/films/edit/${film.maPhim}`}
             >
               <EditOutlined style={{ color: "blue" }} />{" "}

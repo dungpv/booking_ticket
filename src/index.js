@@ -19,7 +19,7 @@ export const connection = new signalR.HubConnectionBuilder()
   .withUrl(`${DOMAIN_SIGNALR}/DatVeHub`)
   .configureLogging(signalR.LogLevel.Information)
   .build();
-
+window.process = {};
 connection
   .start()
   .then(() => {
