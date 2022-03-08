@@ -41,3 +41,20 @@ export const layThongTinNguoiDungAction = () => {
     }
   };
 };
+
+export const dangKyAction = (thongTinDangKy) => {
+  return async (dispatch) => {
+    try {
+      const result = await quanLyNguoiDungService.dangKy(thongTinDangKy);
+
+      if (result.data.statusCode === 200) {
+        alert("Đăng ký thành công!");
+        history.push("/login");
+      }
+
+      //console.log("result", result);
+    } catch (errors) {
+      console.log("errors", errors);
+    }
+  };
+};
