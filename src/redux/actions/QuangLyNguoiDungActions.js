@@ -1,6 +1,8 @@
 import { quanLyNguoiDungService } from "../../services/QuanLyNguoiDungService";
 import {
   DANG_NHAP_ACTION,
+  GET_DANH_SACH_NGUOI_DUNG,
+  GET_LOAI_NGUOI_DUNG,
   SET_THONG_TIN_NGUOI_DUNG,
 } from "./types/QuanLyNguoiDungType";
 import { history } from "../../App";
@@ -53,6 +55,43 @@ export const dangKyAction = (thongTinDangKy) => {
       }
 
       //console.log("result", result);
+    } catch (errors) {
+      console.log("errors", errors);
+    }
+  };
+};
+
+export const layDanhSachNguoiDungAction = (maNhom, tuKhoa) => {
+  return async (dispatch) => {
+    try {
+      const result = await quanLyNguoiDungService.layDanhSachNguoiDung(
+        maNhom,
+        tuKhoa
+      );
+
+      if (result.data.statusCode === 200) {
+        dispatch({
+          type: GET_DANH_SACH_NGUOI_DUNG,
+          danhSachNguoiDung: result.data.content,
+        });
+      }
+    } catch (errors) {
+      console.log("errors", errors);
+    }
+  };
+};
+
+export const layDanhSachLoaiNguoiDungAction = () => {
+  return async (dispatch) => {
+    try {
+      const result = await quanLyNguoiDungService.layDanhSachLoaiNguoiDung();
+
+      if (result.data.statusCode === 200) {
+        dispatch({
+          type: GET_LOAI_NGUOI_DUNG,
+          arrLoaiNguoiDung: result.data.content,
+        });
+      }
     } catch (errors) {
       console.log("errors", errors);
     }

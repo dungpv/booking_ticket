@@ -16,6 +16,19 @@ export class QuanLyNguoiDungService extends baseService {
   dangKy = (thongTinDangKy) => {
     return this.post(`/QuanLyNguoiDung/DangKy`, thongTinDangKy);
   };
+
+  layDanhSachNguoiDung = (maNhom, tuKhoa = "") => {
+    if (tuKhoa !== "") {
+      return this.get(
+        `/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${maNhom}&tuKhoa=${tuKhoa}`
+      );
+    }
+    return this.get(`/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=${maNhom}`);
+  };
+
+  layDanhSachLoaiNguoiDung = () => {
+    return this.get(`/QuanLyNguoiDung/LayDanhSachLoaiNguoiDung`);
+  };
 }
 
 export const quanLyNguoiDungService = new QuanLyNguoiDungService();
