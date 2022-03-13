@@ -8,6 +8,7 @@ import {
 import { history } from "../../App";
 import { ThongTinNguoiDung } from "../../_core/models/ThongTinNguoiDung";
 import { displayLoadingAction, hideLoadingAction } from "./LoadingActions";
+import { GROUPID } from "../../util/settings/config";
 
 export const dangNhapAction = (thongTinDangNhap) => {
   return async (dispatch) => {
@@ -114,6 +115,20 @@ export const themNguoiDungAction = (
     } catch (error) {
       console.log("error", error);
       console.log("error", error.response?.data);
+    }
+  };
+};
+
+export const xoaNguoiDungAction = (taiKhoan) => {
+  return async (dispatch) => {
+    try {
+      const result = await quanLyNguoiDungService.xoaNguoiDung(taiKhoan);
+      alert("Xóa người dùng thành công!");
+      dispatch(layDanhSachNguoiDungAction(GROUPID, ""));
+      history.push("/admin/users");
+    } catch (errors) {
+      alert(errors.response?.data.content);
+      console.log(errors.response?.data);
     }
   };
 };

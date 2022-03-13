@@ -12,6 +12,7 @@ import { history } from "../../../App";
 import {
   layDanhSachLoaiNguoiDungAction,
   layDanhSachNguoiDungAction,
+  xoaNguoiDungAction,
 } from "../../../redux/actions/QuanLyNguoiDungActions";
 import {
   GROUPID,
@@ -123,7 +124,7 @@ export default function Users(props) {
                     "Bạn có chắc muốn xóa tài khoản " + user.taiKhoan
                   )
                 ) {
-                  //dispatch(xoaPhimAction(film.maPhim));
+                  dispatch(xoaNguoiDungAction(user.taiKhoan));
                 }
               }}
             >
