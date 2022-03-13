@@ -12,8 +12,9 @@ import { history } from "../../../App";
 import {
   layDanhSachLoaiNguoiDungAction,
   layDanhSachNguoiDungAction,
-} from "../../../redux/actions/QuangLyNguoiDungActions";
+} from "../../../redux/actions/QuanLyNguoiDungActions";
 import {
+  GROUPID,
   GROUP_KHACH_HANG,
   GROUP_KHACH_HANG_TEXT,
   GROUP_QUAN_TRI,
@@ -23,23 +24,15 @@ const { Search } = Input;
 const { Option } = Select;
 
 export default function Users(props) {
-  const { danhSachNguoiDung, arrLoaiNguoiDung } = useSelector(
+  const { danhSachNguoiDung } = useSelector(
     (state) => state.QuanLyNguoiDungReducer
   );
-  const [loaiNguoiDung, setLoaiNguoiDung] = useState(GROUP_KHACH_HANG);
-  const [tuKhoa, setTuKhoa] = useState("");
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(layDanhSachLoaiNguoiDungAction());
-
-    dispatch(layDanhSachNguoiDungAction(GROUP_KHACH_HANG, ""));
+    dispatch(layDanhSachNguoiDungAction(GROUPID, ""));
   }, []);
-
-  const loaiNguoiDungOption = arrLoaiNguoiDung.map((item, index) => {
-    return { value: item.maLoaiNguoiDung, label: item.tenLoai };
-  });
 
   const columns = [
     {
@@ -146,26 +139,12 @@ export default function Users(props) {
   const data = danhSachNguoiDung;
 
   const onSearch = (value) => {
-    //console.log(loaiNguoiDung, value);
-    let maNhom =
-      loaiNguoiDung == GROUP_KHACH_HANG_TEXT
-        ? GROUP_KHACH_HANG
-        : GROUP_QUAN_TRI;
-    setTuKhoa(value);
+    let maNhom = GROUPID;
     dispatch(layDanhSachNguoiDungAction(maNhom, value));
   };
 
   function onChange(pagination, filters, sorter, extra) {
     console.log("params", pagination, filters, sorter, extra);
-  }
-
-  function onSelectChange(value) {
-    //console.log(`selected ${value}`);
-    setLoaiNguoiDung(value);
-    let maNhom =
-      value == GROUP_KHACH_HANG_TEXT ? GROUP_KHACH_HANG : GROUP_QUAN_TRI;
-
-    dispatch(layDanhSachNguoiDungAction(maNhom, tuKhoa));
   }
 
   return (
@@ -174,24 +153,14 @@ export default function Users(props) {
       <Button
         className="mb-5"
         onClick={() => {
-          //   history.push("/admin/films/addnew");
+          history.push("/admin/users/addnew");
         }}
       >
         Thêm người dùng
       </Button>
       {/* <Search placeholder="input search text" onSearch={onSearch} style={{ width: 200 }} /> */}
       <Row>
-        <Col span={6}>
-          {" "}
-          <Select
-            style={{ width: "100%" }}
-            onChange={onSelectChange}
-            options={loaiNguoiDungOption}
-            size="large"
-            defaultValue={GROUP_KHACH_HANG_TEXT}
-          ></Select>
-        </Col>
-        <Col span={6}>
+        <Col span={12}>
           {" "}
           <Search
             className="mb-5"

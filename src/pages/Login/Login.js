@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
-import { dangNhapAction } from "../../redux/actions/QuangLyNguoiDungActions";
+import { dangNhapAction } from "../../redux/actions/QuanLyNguoiDungActions";
 
 export default function Login(props) {
   const dispatch = useDispatch();

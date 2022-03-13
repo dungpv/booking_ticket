@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   dangKyAction,
   dangNhapAction,
-} from "../../redux/actions/QuangLyNguoiDungActions";
+} from "../../redux/actions/QuanLyNguoiDungActions";
 import { GROUPID } from "../../util/settings/config";
 import * as Yup from "yup";
 

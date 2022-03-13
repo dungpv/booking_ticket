@@ -1,3 +1,4 @@
+import { ThongTinNguoiDung } from "../_core/models/ThongTinNguoiDung";
 import { baseService } from "./baseService";
 
 export class QuanLyNguoiDungService extends baseService {
@@ -28,6 +29,10 @@ export class QuanLyNguoiDungService extends baseService {
 
   layDanhSachLoaiNguoiDung = () => {
     return this.get(`/QuanLyNguoiDung/LayDanhSachLoaiNguoiDung`);
+  };
+
+  themNguoiDung = (thongTinNguoiDung = new ThongTinNguoiDung()) => {
+    return this.post(`/QuanLyNguoiDung/ThemNguoiDung`, thongTinNguoiDung);
   };
 }
 

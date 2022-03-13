@@ -6,6 +6,8 @@ import {
   SET_THONG_TIN_NGUOI_DUNG,
 } from "./types/QuanLyNguoiDungType";
 import { history } from "../../App";
+import { ThongTinNguoiDung } from "../../_core/models/ThongTinNguoiDung";
+import { displayLoadingAction, hideLoadingAction } from "./LoadingActions";
 
 export const dangNhapAction = (thongTinDangNhap) => {
   return async (dispatch) => {
@@ -94,6 +96,24 @@ export const layDanhSachLoaiNguoiDungAction = () => {
       }
     } catch (errors) {
       console.log("errors", errors);
+    }
+  };
+};
+
+export const themNguoiDungAction = (
+  thongTinNguoiDung = new ThongTinNguoiDung()
+) => {
+  return async (dispatch) => {
+    try {
+      const result = await quanLyNguoiDungService.themNguoiDung(
+        thongTinNguoiDung
+      );
+      alert("Thêm mới người dùng thành công.");
+      console.log("result", result);
+      history.push("/admin/users");
+    } catch (error) {
+      console.log("error", error);
+      console.log("error", error.response?.data);
     }
   };
 };

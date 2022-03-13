@@ -21,7 +21,7 @@ import {
 } from "../../redux/actions/types/QuanLyDatVeType";
 import { ThongTinDatVe } from "../../_core/models/ThongTinDatVe";
 import { Tabs } from "antd";
-import { layThongTinNguoiDungAction } from "../../redux/actions/QuangLyNguoiDungActions";
+import { layThongTinNguoiDungAction } from "../../redux/actions/QuanLyNguoiDungActions";
 import moment from "moment";
 import { connection } from "../../index";
 import { history } from "../../App";
