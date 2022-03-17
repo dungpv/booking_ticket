@@ -132,3 +132,21 @@ export const xoaNguoiDungAction = (taiKhoan) => {
     }
   };
 };
+
+export const capNhatThongTinNguoiDungAction = (
+  thongTinNguoiDung = new ThongTinNguoiDung()
+) => {
+  return async (dispatch) => {
+    try {
+      const result = await quanLyNguoiDungService.capNhatThongTinNguoiDung(
+        thongTinNguoiDung
+      );
+      alert("Cập nhật người dùng thành công.");
+      console.log("result", result);
+      history.push("/admin/users");
+    } catch (error) {
+      console.log("error", error);
+      console.log("error", error.response?.data);
+    }
+  };
+};

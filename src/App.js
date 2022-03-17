@@ -21,6 +21,7 @@ import AddNew from "./pages/Admin/Films/AddNew/AddNew";
 import Edit from "./pages/Admin/Films/Edit/Edit";
 import Users from "./pages/Admin/Users/Users";
 import AddUser from "./pages/Admin/Users/AddNew/AddUser";
+import EditUser from "./pages/Admin/Users/Edit/EditUser";
 
 export const history = createBrowserHistory();
 
@@ -38,6 +39,11 @@ function App() {
         <AdminTemplate path="/admin" exact Component={Dashboard} />
         <AdminTemplate path="/admin/users" exact Component={Users} />
         <AdminTemplate path="/admin/users/addnew" exact Component={AddUser} />
+        <AdminTemplate
+          path="/admin/users/edit/:user"
+          exact
+          Component={EditUser}
+        />
 
         <AdminTemplate path="/admin/films" exact Component={Films} />
         <AdminTemplate path="/admin/films/addnew" exact Component={AddNew} />

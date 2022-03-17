@@ -110,7 +110,7 @@ export default function Users(props) {
             <NavLink
               key={1}
               className=" mr-2 text-2xl"
-              to={`/admin/films/edit/${user.taiKhoan}`}
+              to={`/admin/users/edit/${user.taiKhoan}`}
             >
               <EditOutlined style={{ color: "blue" }} />{" "}
             </NavLink>
