@@ -150,3 +150,23 @@ export const capNhatThongTinNguoiDungAction = (
     }
   };
 };
+
+export const capNhatProfileNguoiDungAction = (
+  thongTinNguoiDung = new ThongTinNguoiDung()
+) => {
+  return async (dispatch) => {
+    try {
+      const result = await quanLyNguoiDungService.capNhatThongTinNguoiDung(
+        thongTinNguoiDung
+      );
+      if (result.data.statusCode === 200) {
+        alert("Cập nhật thông tin người dùng thành công.");
+
+        history.push("/profile");
+      }
+    } catch (error) {
+      console.log("error", error);
+      console.log("error", error.response?.data);
+    }
+  };
+};

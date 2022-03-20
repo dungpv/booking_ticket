@@ -7,7 +7,6 @@ import {
   capNhatThongTinNguoiDungAction,
   layDanhSachLoaiNguoiDungAction,
   layDanhSachNguoiDungAction,
-  themNguoiDungAction,
 } from "../../../../redux/actions/QuanLyNguoiDungActions";
 import { ThongTinNguoiDung } from "../../../../_core/models/ThongTinNguoiDung";
 import * as Yup from "yup";
@@ -34,7 +33,7 @@ export default function EditUser(props) {
   const thongTinUser = danhSachNguoiDung.find(
     (nguoiDung) => nguoiDung.taiKhoan === user
   );
-  console.log(thongTinUser);
+  //console.log(thongTinUser);
 
   const phoneRegExp =
     /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
